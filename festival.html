@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binalonan Festivals & Food - Official Tourism | Pangasinan Paradise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* ============================================
+           COMPLETE STANDALONE FESTIVALS PAGE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0A2540;
+            --primary-gold: #F4C430;
+            --secondary-gold: #FFB347;
+            --accent-blue: #1E3A8A;
+            --white: #FFFFFF;
+            --glass: rgba(255,255,255,0.1);
+            --shadow: 0 25px 70px rgba(10,37,64,0.3);
+            --shadow-glow: 0 0 40px rgba(244,196,48,0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            background: #0a0f1e;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            border-radius: 50%;
+            animation: float 25s infinite linear;
+        }
+
+        .particle:nth-child(1) { width: 6px; height: 6px; left: 10%; animation-delay: 0s; top: -10%; }
+        .particle:nth-child(2) { width: 4px; height: 4px; left: 20%; animation-delay: -5s; top: -10%; }
+        .particle:nth-child(3) { width: 8px; height: 8px; left: 80%; animation-delay: -10s; top: -10%; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 90%; animation-delay: -15s; top: -10%; }
+        .particle:nth-child(5) { width: 7px; height: 7px; left: 30%; animation-delay: -20s; top: -10%; }
+        .particle:nth-child(6) { width: 9px; height: 9px; left: 55%; animation-delay: -3s; top: -10%; }
+        .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: -8s; top: -10%; }
+        .particle:nth-child(8) { width: 10px; height: 10px; left: 45%; animation-delay: -12s; top: -10%; }
+        .particle:nth-child(9) { width: 6px; height: 6px; left: 15%; animation-delay: -18s; top: -10%; }
+        .particle:nth-child(10) { width: 7px; height: 7px; left: 85%; animation-delay: -22s; top: -10%; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+            padding: 1rem 0;
+            background: rgba(10,15,30,0.95);
+            backdrop-filter: blur(25px);
+            transition: all 0.4s ease;
+        }
+
+        nav.nav-scrolled {
+            padding: 0.7rem 0;
+            background: rgba(10,15,30,0.98);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(244,196,48,0.5);
+            text-decoration: none;
+        }
+
+        .logo a {
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 70%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-gold);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 2rem 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            text-align: center;
+            background: linear-gradient(135deg, #fff, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold), var(--primary-gold));
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            height: 140px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark));
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(244,196,48,0.25), transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: white;
+            z-index: 2;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark));
+            display: block;
+        }
+
+        .card-img-placeholder {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-gold);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-8px) rotate(360deg);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 2rem;
+            }
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10,15,30,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .section {
+                padding: 100px 1.5rem 60px;
+            }
+            
+            .card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="home.html">Binalonan</a></div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html">🏠 Home</a></li>
+                <li><a href="about.html">📖 About</a></li>
+                <li><a href="attractions.html">🗺️ Attractions</a></li>
+                <li><a href="festival.html" class="active">🎉 Festivals</a></li>
+                <li><a href="food.html">🍲Popular Food</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Festivals Section -->
+    <section id="festivals" class="section reveal">
+        <h2 class="section-title">Town Festivals</h2>
+        <div class="cards-grid">
+            <!-- Card 1: Binnalon Festival / Street Dancing -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-fireworks card-icon"></i>
+                </div>
+                <div class="card-img-placeholder">
+                    <i class="fas fa-drumstick-bite"></i>
+                       <div>
+                    <img src="festival.jpg" height="300px" width="600px" >
+                    </div>  
+                </div>
+                <div class="card-content">
+                    <h3>Binnalon Festival & Street Dancing</h3>
+                    <p>The Binalonan Fiesta (Binnalon Festival), held annually in February, features a major Civic and Float Parade showcasing cultural heritage, colorful floats, and street dancing. The celebration includes street dancing and the grand float parade from near Sto. Niño Church to the Municipal Hall.</p>
+                    <p style="margin-top: 0.8rem;">The festival showcases the vibrant culture and traditions of Binalonan, with locals and visitors joining together in colorful costumes and energetic performances.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Miss Binalonan Pageant -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-music card-icon"></i>
+                </div>
+                <div class="card-img-placeholder">
+                    <i class="fas fa-crown"></i>
+                        <div>
+                    <img src="pageant.jpg" height="300px" width="600px" >
+                    </div>  
+                </div>
+                <div class="card-content">
+                    <h3>Miss Binalonan Pageant</h3>
+                    <p>The Miss Binalonan pageant is the hallmark beauty competition of Binalonan, Pangasinan, held annually as a highlight of the Binnalon Festival. The pageant serves as a platform to showcase the intelligence, talent, and cultural pride of women representing the town's 24 barangays.</p>
+                    <p style="margin-top: 0.8rem;">Contestants compete in various categories including national costume, talent, and evening gown, celebrating the grace and beauty of Binalonan's women.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Summer Bazaar -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-users card-icon"></i>
+                </div>
+                <div class="card-img-placeholder">
+                    <i class="fas fa-store"></i>
+                        <div>
+                    <img src="summer.jpg" height="300px" width="600px" >
+                    </div>  
+                </div>
+                <div class="card-content">
+                    <h3>Summer Bazaar</h3>
+                    <p>The Binalonan Summer Bazaar is a vibrant community event located at the Binalonan Plaza/Rock Garden (Poblacion), featuring local food stalls, varied goods, and lively nighttime atmosphere. It serves as a popular social hub for residents to enjoy summer vibes, music, and local products with family and friends.</p>
+                    <p style="margin-top: 0.8rem;">The bazaar features local artisans, food vendors, and entertainment, making it a perfect destination for evening strolls and shopping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="reveal">
+        <div class="footer-content">
+            <div class="footer-logo">Binalonan Tourism</div>
+            <p style="opacity: 0.9; margin-bottom: 1.5rem;">© 2026 Official Binalonan Tourism. All Rights Reserved | The Heart of Pangasinan</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/search/top?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/explore/tags/binalonan/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/results?search_query=binalonan+pangasinan" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+            
+            // Scroll reveal animation
+            document.querySelectorAll('.reveal').forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // ============================================
+        // MOBILE MENU TOGGLE
+        // ============================================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                const spans = menuToggle.querySelectorAll('span');
+                if (navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle?.querySelectorAll('span');
+                    if (spans) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // INITIAL REVEAL CHECK
+        // ============================================
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('active');
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>

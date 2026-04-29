@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Binalonan - Official Tourism | Pangasinan Paradise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* ============================================
+           COMPLETE STANDALONE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0A2540;
+            --primary-gold: #F4C430;
+            --secondary-gold: #FFB347;
+            --accent-blue: #1E3A8A;
+            --white: #FFFFFF;
+            --shadow: 0 25px 70px rgba(10,37,64,0.3);
+            --shadow-glow: 0 0 40px rgba(244,196,48,0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #0a0f1e 0%, #1a2332 50%, #0a0f1e 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== Animated Particles ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            border-radius: 50%;
+            animation: floatParticle 20s infinite linear;
+            pointer-events: none;
+        }
+
+        .particle:nth-child(1) { width: 8px; height: 8px; left: 10%; top: -10%; animation-delay: 0s; animation-duration: 18s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 25%; top: -10%; animation-delay: -3s; animation-duration: 22s; }
+        .particle:nth-child(3) { width: 10px; height: 10px; left: 55%; top: -10%; animation-delay: -7s; animation-duration: 25s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 75%; top: -10%; animation-delay: -2s; animation-duration: 20s; }
+        .particle:nth-child(5) { width: 7px; height: 7px; left: 88%; top: -10%; animation-delay: -5s; animation-duration: 23s; }
+        .particle:nth-child(6) { width: 9px; height: 9px; left: 35%; top: -10%; animation-delay: -10s; animation-duration: 28s; }
+        .particle:nth-child(7) { width: 4px; height: 4px; left: 68%; top: -10%; animation-delay: -1s; animation-duration: 19s; }
+        .particle:nth-child(8) { width: 11px; height: 11px; left: 92%; top: -10%; animation-delay: -8s; animation-duration: 26s; }
+        .particle:nth-child(9) { width: 6px; height: 6px; left: 15%; top: -10%; animation-delay: -12s; animation-duration: 24s; }
+        .particle:nth-child(10) { width: 8px; height: 8px; left: 48%; top: -10%; animation-delay: -4s; animation-duration: 21s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(10,15,30,0.95);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .logo a {
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Section Styles ===== */
+        .section {
+            padding: 130px 2rem 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            text-align: center;
+            background: linear-gradient(135deg, #fff, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT CONTENT ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text-content {
+            background: rgba(255,255,255,0.98);
+            padding: 3.5rem 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.4s ease;
+        }
+
+        .about-text-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2d3748;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-description strong {
+            color: var(--accent-blue);
+        }
+
+        .about-description em {
+            color: var(--secondary-gold);
+            font-style: italic;
+        }
+
+        .about-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* ===== Button Styles ===== */
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--primary-dark);
+            box-shadow: 0 10px 25px rgba(244,196,48,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(244,196,48,0.2);
+        }
+
+        /* ===== About Image / Mascot ===== */
+        .about-image {
+            height: 600px;
+            width: 600;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, 
+                rgba(244,196,48,0.2),
+                rgba(30,58,138,0.2),
+                rgba(10,37,64,0.3));
+            backdrop-filter: blur(2px);
+            transition: transform 0.4s ease;
+        }
+    .about-image img{
+    
+    
+    width: 700px;
+    height: 600px;
+    
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image::before {
+           width: 300px;
+            position: absolute;
+            top: 20%;
+            left: 15%;
+            font-size: 4rem;
+            opacity: 0.6;
+            animation: floatElement 4s ease-in-out infinite;
+        }
+
+        .about-image::after {
+          width: 300px;
+            position: absolute;
+            bottom: 25%;
+            right: 15%;
+            font-size: 3rem;
+            opacity: 0.6;
+            animation: floatElement 3s ease-in-out infinite reverse;
+        }
+
+        .image-emoji-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            animation: floatGently 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .image-emoji-center span {
+            display: inline-block;
+            font-size: 7rem;
+        }
+
+        @keyframes floatGently {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0px) scale(1); }
+            50% { transform: translate(-50%, -50%) translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ===== Stats Cards ===== */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(244,196,48,0.3);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-gold);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        /* ===== Modal Styles ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            animation: modalSlide 0.5s ease;
+            border: 1px solid rgba(244,196,48,0.3);
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .about-image { 
+                height: 380px; 
+                order: -1;
+            }
+            .stats-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 110px 1.5rem 60px;
+            }
+            .about-text-content {
+                padding: 2rem 1.5rem;
+            }
+            .about-title {
+                font-size: 1.8rem;
+            }
+            .about-description {
+                font-size: 1rem;
+            }
+            .about-buttons {
+                flex-direction: column;
+            }
+            .about-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 0.5rem;
+            }
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .image-emoji-center {
+                font-size: 5rem;
+            }
+            .image-emoji-center span {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .about-image {
+                height: 280px;
+            }
+            .image-emoji-center {
+                font-size: 4rem;
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+           <div class="logo"><a href="home.html">Binalonan</a></div>
+            <ul class="nav-links">
+                <li><a href="home.html">🏠 Home</a></li>
+                <li><a href="about.html" class="active">📖 About</a></li>
+                <li><a href="attractions.html">🗺️ Attractions</a></li>
+                <li><a href="festival.html">🎉 Festivals</a></li>
+                <li><a href="food.html">🍲Popular Food</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN ABOUT SECTION -->
+    <section id="about" class="section reveal">
+        <h2 class="section-title">Binalonan's Story</h2>
+        <div class="about-content">
+            <div class="about-text-content">
+                <h3 class="about-title">Educational Capital of Pangasinan</h3>
+                <p class="about-description">
+                    Nestled in the heart of Pangasinan, <strong>Binalonan</strong> is a <strong>first-class municipality</strong> renowned for its 
+                    academic excellence and rich cultural heritage. Our picturesque town blends verdant rice fields with 
+                    modern universities, offering visitors an authentic taste of <em>Filipino provincial life</em>.
+                </p>
+                <div class="about-buttons">
+                    <button class="btn btn-primary" onclick="showVisionModal()">
+                        <i class="fas fa-eye"></i> Vision & Mission
+                    </button>
+                    <button class="btn btn-secondary" onclick="showHistoryModal()">
+                        <i class="fas fa-history"></i> Our History
+                    </button>
+                </div>
+            </div>
+            <div class="about-image">
+               <img src="logo2.png" >
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-container reveal">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="stat-number" id="statYear">1765</span>
+                <span class="stat-label">Year Founded</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <span class="stat-number" id="statPopulation">55K+</span>
+                <span class="stat-label">Happy Residents</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-church"></i></div>
+                <span class="stat-number" id="statChurches">2</span>
+                <span class="stat-label">Century-old Churches</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--primary-gold), #fff); background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Binalonan Tourism</div>
+            <p style="opacity: 0.9; margin-bottom: 2rem;">© 2026 Official Binalonan Tourism. All Rights Reserved | The Heart of Pangasinan</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/search/top?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/explore/tags/binalonan/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/results?search_query=binalonan+pangasinan" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // MODAL FUNCTIONS
+        // ============================================
+        
+        function showVisionModal() {
+            const modalHtml = `
+                <div id="infoModal" class="modal-overlay" onclick="closeModalOnClick(event)">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🎯✨</div>
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary-gold);">Vision & Mission</h2>
+                        <div style="text-align: left;">
+                            <p style="margin-bottom: 1.5rem;"><strong style="color: var(--primary-gold);">🌟 VISION:</strong><br>To position Binalonan as the premier educational and eco-tourism destination in Northern Luzon, fostering sustainable development while preserving our rich cultural heritage.</p>
+                            <p style="margin-bottom: 0.5rem;"><strong style="color: var(--primary-gold);">🎯 MISSION:</strong></p>
+                            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                <li>Promote responsible tourism that benefits local communities</li>
+                                <li>Preserve and celebrate our unique cultural traditions</li>
+                                <li>Provide world-class visitor experiences</li>
+                                <li>Support local artisans, farmers, and entrepreneurs</li>
+                                <li>Maintain environmental sustainability across all attractions</li>
+                            </ul>
+                        </div>
+                        <button onclick="closeModal()" class="btn btn-primary" style="margin-top: 2rem; padding: 0.8rem 2rem;">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showHistoryModal() {
+            const modalHtml = `
+                <div id="infoModal" class="modal-overlay" onclick="closeModalOnClick(event)">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">📜🏛️</div>
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary-gold);">Our History</h2>
+                        <div style="text-align: left;">
+                            <p style="margin-bottom: 1rem;">Binalonan was officially founded in <strong>1765</strong> during the Spanish colonial period. The name "Binalonan" is derived from the Pangasinan word <strong>"balonan"</strong> which means "to provide food for the journey" – a testament to the town's tradition of hospitality.</p>
+                            <p style="margin-bottom: 1rem;">Throughout its rich history, Binalonan has evolved from a humble agricultural settlement into the <strong>"Educational Capital of Pangasinan"</strong>, now home to multiple universities and colleges that serve students from across the region.</p>
+                            <p>The town's historic <strong>Sto. Niño Parish Church</strong> stands as a living monument to our enduring faith, while the annual <strong>Binnalon Festival</strong> celebrates our vibrant cultural heritage.</p>
+                        </div>
+                        <button onclick="closeModal()" class="btn btn-primary" style="margin-top: 2rem; padding: 0.8rem 2rem;">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeModalOnClick(event) {
+            if (event.target.id === 'infoModal') {
+                closeModal();
+            }
+        }
+
+        // ============================================
+        // SCROLL REVEAL ANIMATION
+        // ============================================
+        
+        function checkReveal() {
+            document.querySelectorAll('.reveal').forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10,15,30,0.98)';
+                nav.style.padding = '0.7rem 0';
+            } else {
+                nav.style.background = 'rgba(10,15,30,0.95)';
+                nav.style.padding = '1rem 0';
+            }
+        });
+
+        // ============================================
+        // SMOOTH NUMBER ANIMATION FOR STATS
+        // ============================================
+        
+        function animateNumber(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.floor(target).toLocaleString() + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString() + suffix;
+                }
+            }, 25);
+        }
+
+        // Trigger stat animation when in view
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const yearElem = document.getElementById('statYear');
+                    if (yearElem && yearElem.textContent === '1765') {
+                        animateNumber(yearElem, 1765, '');
+                    }
+                    statObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            statObserver.observe(statsContainer);
+        }
+
+        // ============================================
+        // PREVENT BROKEN LINKS - REMOVE DEFAULT HASH BEHAVIOR
+        // ============================================
+        
+        document.querySelectorAll('.btn-secondary, .btn-primary').forEach(btn => {
+            if (btn.getAttribute('onclick')) return;
+            btn.addEventListener('click', (e) => {
+                if (btn.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

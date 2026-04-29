@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binalonan Tourism - Pangasinan Paradise | Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0A2540;
+            --primary-gold: #F4C430;
+            --secondary-gold: #FFB347;
+            --accent-blue: #1E3A8A;
+            --white: #FFFFFF;
+            --glass: rgba(255,255,255,0.1);
+            --glass-dark: rgba(10,37,64,0.9);
+            --shadow: 0 25px 70px rgba(10,37,64,0.2);
+            --shadow-glow: 0 0 40px rgba(244,196,48,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: #0a0f1e;
+        }
+
+        /* Animated Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--primary-gold), transparent);
+            border-radius: 50%;
+            animation: float 25s infinite linear;
+        }
+
+        .particle:nth-child(1) { width: 6px; height: 6px; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 4px; height: 4px; left: 20%; animation-delay: -5s; }
+        .particle:nth-child(3) { width: 8px; height: 8px; left: 80%; animation-delay: -10s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 90%; animation-delay: -15s; }
+        .particle:nth-child(5) { width: 7px; height: 7px; left: 30%; animation-delay: -20s; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+            padding: 1rem 0;
+            backdrop-filter: blur(25px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(244,196,48,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            position: relative;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            text-shadow: 0 5px 20px rgba(244,196,48,0.5);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary-gold);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section with REAL Binalonan Images */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(10,37,64,0.85) 0%,
+                rgba(30,58,138,0.7) 50%,
+                rgba(244,196,48,0.2) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1000px;
+            padding: 0 2rem;
+            animation: heroSlideIn 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes heroSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            text-shadow: 0 0 50px rgba(244,196,48,0.6);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.98);
+            margin-bottom: 3.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.5rem 3.5rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--primary-dark);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: var(--shadow-glow), 0 30px 80px rgba(244,196,48,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--primary-gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 10rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            text-align: center;
+            background: linear-gradient(135deg, #fff, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5rem;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 3px;
+            box-shadow: 0 5px 20px rgba(244,196,48,0.4);
+        }
+
+        /* Card Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 3rem;
+            margin-top: 6rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold), var(--primary-gold));
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-25px) rotateX(10deg) scale(1.02);
+            box-shadow: 0 50px 120px rgba(10,37,64,0.3);
+        }
+
+        .card-header {
+            height: 160px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(244,196,48,0.3), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            z-index: 2;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .card-content {
+            padding: 3rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 6rem;
+        }
+
+        .about-image {
+            height: 600px;
+            background: linear-gradient(135deg, 
+                rgba(244,196,48,0.1),
+                rgba(30,58,138,0.1),
+                rgba(10,37,64,0.1));
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image::before {
+            content: '🏞️✨🇵🇭';
+            font-size: 10rem;
+            animation: floatGently 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes floatGently {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 6rem;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 4rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(244,196,48,0.2);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-blue));
+            color: white;
+            padding: 5rem 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-link:hover {
+            background: var(--primary-gold);
+            transform: translateY(-10px) rotate(360deg);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 6rem 2rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Binalonan</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#spots">Attractions</a></li>
+                <li><a href="#festivals">Festivals</a></li>
+                <li><a href="#food">Popular Food</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero with REAL Binalonan Background -->
+    <section id="home" class="hero">
+        <!-- Multiple Binalonan Images for Dynamic Effect -->
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <!-- Fallback to high-quality images if video not supported -->
+            <source src="https://images.unsplash.com/photo-1580130684518-6f37d5ee845e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" type="video/mp4">
+            <!-- Real Binalonan/Pangasinan Images -->
+            <img src="https://images.unsplash.com/photo-1580130684518-6f37d5ee845e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Binalonan Rice Fields" style="width:100%;height:100%;object-fit:cover;">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Discover Binalonan</h1>
+            <p class="hero-subtitle">Pangasinan's Crown Jewel - Where Lush Rice Fields Meet Progressive Education and Timeless Filipino Hospitality</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Happy Visitors</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Universities</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">365</span>
+                    <span class="stat-label">Sunny Days</span>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#spots" class="btn btn-primary">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Explore Now
+                </a>
+                <button class="btn btn-secondary" onclick="showWelcomeModal()">
+                    <i class="fas fa-star"></i>
+                    Welcome Gift
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section reveal">
+        <h2 class="section-title">Binalonan's Story</h2>
+        <div class="about-content">
+            <div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 3rem; background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem;">
+                    Educational Capital of Pangasinan
+                </h3>
+                <p style="font-size: 1.3rem; line-height: 1.9; color: #666; margin-bottom: 2.5rem;">
+                    Nestled in the heart of Pangasinan, Binalonan is a first-class municipality renowned for its academic excellence and rich cultural heritage. Our picturesque town blends verdant rice fields with modern universities, offering visitors an authentic taste of Filipino provincial life.
+                </p>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <div class="btn btn-primary" style="padding: 1rem 2.5rem;">Vision & Mission</div>
+                    <div class="btn btn-secondary" style="padding: 1rem 2.5rem;">Our History</div>
+                </div>
+            </div>
+            <img src="logo.jpg" class="card-img-top">
+        </div>
+    </section>
+
+    <!-- Attractions -->
+    <section id="spots" class="section reveal" style="background: linear-gradient(135deg, rgba(244,196,48,0.03) 0%, transparent 100%);">
+        <h2 class="section-title">Must-Visit Attractions</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-landmark card-icon"></i>
+                </div>
+                <img src="fountain.jpg" class="card-img-top">
+                    <h3>Binalonan Town Plaza</h3>
+                    <p>The Dancing Fountain in Binalonan is a modern attraction located in the municipal area. It is one of the popular spots in the town, especially at night, because of its colorful lights and the synchronized movement of water that appears to “dance” with the music.
+
+It creates a relaxing and enjoyable atmosphere for visitors, families, and young people who want to unwind or stroll around the plaza. The fountain is also often highlighted during town events and special celebrations, making it a lively centerpiece of the community..</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-church card-icon"></i>
+                </div>
+                <img src="church.jpg" class="card-img-top">
+                    <h3>Colonial Churches</h3>
+                    <p>Sto. Niño Parish Church
+The Sto. Niño Parish Church has hundreds of years of history carved on its walls and serves as a physical manifestation of the Christian faith and social service of the town. Being a legacy of the architecture during the Spanish colonial rule, the church witnessed the unceasing faith of both the locals and tourists. It is located only a few meters away from the municipal hall.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-mountain card-icon"></i>
+                </div>
+				<img src="valley.jpg" class="card-img-top">
+                <div class="card-content">
+                    <h3>Lubas Valley Farm</h3>
+                    <p>Lubas Valley Farm in Binalonan, Pangasinan, is a scenic eco-tourism destination in Sitio Lubas, Brgy. Sta. Catalina, offering a sustainable getaway featuring flower gardens, the small Mt. Paldingan, and a, "4R" (reduce, reuse, recycle, recover) philosophy. It is known for its solar-powered facilities, native huts (tipi huts), a mini-forest, and Maring Lita's Food House.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-graduation-cap card-icon"></i>
+                </div>
+                <div class="card-content">
+                    <h3>University Campus Tours</h3>
+                    <p>World-class educational institutions open for visitors. See where Pangasinan's brightest minds shape the nation's future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festivals -->
+    <section id="festivals" class="section reveal">
+        <h2 class="section-title">Town Festival</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-fireworks card-icon"></i>
+                </div>
+				<img src="festival.jpg" class="card-img-top">
+                    <h3>Street Dancing</h3>
+                    <p>The Binalonan Fiesta (Binnalon Festival), held annually in February, features a major Civic and Float Parade showcasing cultural heritage, colorful floats, and street dancing. The 2026 celebration included street dancing on Feb 19 and the grand float parade on Feb 22, departing from near Sto. Niño Church to the Municipal Hall.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-music card-icon"></i>
+                </div>
+				<img src="pageant.jpg" class="card-img-top"
+                <div class="card-content">
+                    <h3>Beauty Contest</h3>
+                    <p>The Miss Binalonan pageant is the hallmark beauty competition of Binalonan, Pangasinan, held annually as a highlight of the Binnalon Festival. The pageant serves as a platform to showcase the intelligence, talent, and cultural pride of women representing the town's 24 barangays.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-users card-icon"></i>
+                </div>
+				<img src="summer.jpg" class="card-img-top">
+                <div class="card-content">
+                    <h3>Summer Bazaar</h3>
+                    <p>The Binalonan Summer Bazaar 2026 is a vibrant community event located at the Binalonan Plaza/Rock Garden (Poblacion), featuring local food stalls, varied goods, and lively nighttime atmosphere. It serves as a popular social hub for residents to enjoy summer vibes, music, and local products with family and friends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuisine -->
+    <section id="food" class="section reveal" style="background: linear-gradient(135deg, rgba(244,196,48,0.05) 0%, transparent 100%);">
+        <h2 class="section-title">Popular Food</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-seedling card-icon"></i>
+                </div>
+                <img src="aa.jpg" class="card-img-top">
+                    <h3>Longganisa</h3>
+                    <p>Binalonan Longganisa, or "Binalongganisa," is a savory, garlicky pork sausage from Pangasinan, Philippines, known for its bold, meaty flavor and organic ingredients. Often served with sinangag (fried rice) and vinegar, this local specialty is typically sold in garlic, sweet, and spicy variants for roughly 340-360 pesos per kilo.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-drumstick-bite card-icon"></i>
+                </div>
+				<img src="b.jpg" class="card-img-top">
+                <div class="card-content">
+                    <h3>Pigar-Pigar</h3>
+                    <p>Pigar-pigar in Binalonan, Pangasinan, is a beloved local delicacy consisting of thinly sliced beef (or carabeef) quickly deep-fried with cabbage and topped with a generous amount of crunchy onion slices. The name comes from the Pangasinan word for "turning over," referring to the constant stirring of the meat during cooking.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-fire-flame-curly card-icon"></i>
+                </div>
+				<img src="c.jpg" class="card-img-top">
+                <div class="card-content">
+                    <h3>Tupig</h3>
+                    <p>Tupig in Binalonan, Pangasinan, is a popular native delicacy made from glutinous rice flour, shredded young coconut, coconut milk, and molasses or brown sugar. It is wrapped in banana leaves and grilled over charcoal, resulting in a chewy, smoky, and slightly sweet treat known as a beloved street food and pasalubong.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section reveal">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 2.5rem; text-align: center;">
+                    Visit Us
+                </h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Municipal Hall</h4>
+                        <p>Binalonan, Pangasinan 2433<br>Philippines</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+63 (75) 123-4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>tourism@binalonan.gov.ph</p>
+                    </div>
+                </div>
+            </div>
+            <form class="card" style="padding: 4rem;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-dark); margin-bottom: 2rem; text-align: center;">
+                    Send Message
+                </h3>
+                <div style="display: grid; gap: 1.5rem;">
+                    <input type="text" placeholder="Your Name *" style="padding: 1.5rem; border: 2px solid rgba(244,196,48,0.3); border-radius: 15px; font-size: 1.1rem; font-family: inherit; background: rgba(255,255,255,0.8);" required>
+                    <input type="email" placeholder="Your Email *" style="padding: 1.5rem; border: 2px solid rgba(244,196,48,0.3); border-radius: 15px; font-size: 1.1rem; font-family: inherit; background: rgba(255,255,255,0.8);" required>
+                    <textarea rows="6" placeholder="Your Message *" style="padding: 1.5rem; border: 2px solid rgba(244,196,48,0.3); border-radius: 15px; font-size: 1.1rem; font-family: inherit; background: rgba(255,255,255,0.8); resize: vertical;" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Inquiry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 2rem;">
+                <div class="logo" style="font-size: 3rem;">Binalonan Tourism</div>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-top: 1rem;">© 2026 Official Binalonan Tourism. All Rights Reserved | The Heart of Pangasinan</p>
+            </div>
+        
+        </div>
+    </footer>
+<div class="social-links">
+    <a href="https://www.facebook.com/search/top?q=binalonan%20pangasinan" target="_blank" class="social-link">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/binalonan/" target="_blank" class="social-link">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link">
+        <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://www.youtube.com/results?search_query=binalonan+pangasinan" target="_blank" class="social-link">
+        <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://twitter.com/search?q=binalonan%20pangasinan" target="_blank" class="social-link">
+        <i class="fab fa-twitter"></i>
+    </a>
+</div>
+    <script>
+        // Enhanced Welcome Modal
+        function showWelcomeModal() {
+            const modal = `
+                <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:100000;display:flex;align-items:center;justify-content:center;padding:2rem;">
+                    <div style="background:linear-gradient(135deg,var(--primary-dark),var(--accent-blue));border-radius:30px;padding:4rem;max-width:600px;width:90%;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);text-align:center;color:white;animation:modalSlide 0.8s ease;">
+                        <div style="font-size:6rem;margin-bottom:2rem;">🎉</div>
+                        <h2 style="font-family:'Playfair Display',serif;font-size:3rem;margin-bottom:1.5rem;background:linear-gradient(45deg,var(--primary-gold),var(--secondary-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                            Mabuhay sa Binalonan!
+                        </h2>
+                        <p style="font-size:1.3rem;line-height:1.6;margin-bottom:2.5rem;opacity:0.95;">
+                            Welcome to Pangasinan's most beautiful municipality! 🌾✨<br>
+                            Discover our golden rice fields, world-class universities, 
+                            and the warmest Filipino hospitality you've ever experienced.
+                        </p>
+                        <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+                            <button onclick="this.parentElement.parentElement.parentElement.remove();scrollToSection('#spots')" class="btn" style="background:linear-gradient(45deg,var(--primary-gold),var(--secondary-gold));color:var(--primary-dark);padding:1.2rem 3rem;border:none;border-radius:50px;font-weight:600;cursor:pointer;">
+                                🗺️ Start Exploring
+                            </button>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" class="btn" style="background:transparent;color:white;border:2px solid var(--primary-gold);padding:1.2rem 3rem;border-radius:50px;font-weight:600;cursor:pointer;">
+                                ✕ Close
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+            
+            document.body.insertAdjacentHTML('beforeend', modal);
+        }
+
+        function scrollToSection(section) {
+            document.querySelector(section).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scrolling & active nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Navbar scroll effects
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10,37,64,0.98)';
+                nav.style.boxShadow = '0 20px 60px rgba(0,0,0,0.3)';
+                nav.style.padding = '0.8rem 0';
+            } else {
+                nav.style.background = 'rgba(10,37,64,0.92)';
+                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.2)';
+                nav.style.padding = '1rem 0';
+            }
+
+            // Scroll reveal
+            document.querySelectorAll('.reveal').forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    setTimeout(() => el.classList.add('active'), index * 200);
+                }
+            });
+        });
+
+        // Form handling
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🎉 Thank you for your message! Our tourism team will respond within 24 hours. 🇵🇭');
+            e.target.reset();
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Parallax effect
+        window.addEventListener('mousemove', (e) => {
+            const hero = document.querySelector('.hero-content');
+            const x = (window.innerWidth / 2 - e.clientX) / 25;
+            const y = (window.innerHeight / 2 - e.clientY) / 25;
+            hero.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+</html>
